@@ -7,6 +7,12 @@ gem 'rails', '3.2.13'
 
 gem 'sqlite3'
 
+gem "mongoid", "~> 3.0.0"
+
+group :production do
+  gem 'rails_12factor'
+  # gem 'pg'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -18,6 +24,19 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+end
+
+group :test do
+  gem 'rspec'
+  gem 'rspec-rails', '~> 2.0'
+  gem 'factory_girl_rails', '~> 4.2.0'
+  gem 'faker'
+  # TODO  
+  gem 'cucumber'
+  gem 'cucumber-rails', :require => false
+  gem 'database_cleaner'
+  gem 'capybara'
+  # gem faker
 end
 
 gem 'jquery-rails'
