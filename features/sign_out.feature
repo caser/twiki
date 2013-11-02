@@ -3,7 +3,7 @@ Feature: Sign out
   A user
   Should click "Sign out"
 
-  Scenario: Signs up for a free account
-    Given I am on a page
+  Scenario: User logs out of the site
+    Given I am signed in
     When I press "Sign out"
-    Then the page should have a message saying "You have successfully logged out."
+    Then I should see the sign in page

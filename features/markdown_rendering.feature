@@ -1,9 +1,17 @@
 Feature: Markdown
-  In order to validate Wiki posts
+  In order to validate wiki posts
   A user
   Should be able to see their posts rendered in Markdown in real-time
 
-  Scenario: Real-time post format rendering in Markdown
-    Given I am on the post page
-    When I fill in "post" with "# This is a title with __bold__ text and *italic* #"
-    Then the page should have "<h1>This is a title with <strong>bold</strong> text and <em>italic</em></h1>"
+  Background:
+    Given I am signed in
+
+  @javascript
+  Scenario: User enters content with Markdown formatting
+    When I enter text with Markdown formatting
+    Then I should see the text displayed in proper HTML
+
+  @javascript
+  Scenario: User enters a code snippet
+    When I enter text containing a code snippet
+    Then I should see the code snippet displayed in proper HTML

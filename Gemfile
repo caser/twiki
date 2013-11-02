@@ -27,12 +27,10 @@ group :assets do
 end
 
 group :test do
-  gem 'rspec'
   gem 'rspec-rails', '~> 2.0'
   gem 'factory_girl_rails', '~> 4.2.0'
   gem 'faker'
   # TODO  
-  gem 'cucumber'
   gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
   gem 'capybara'
