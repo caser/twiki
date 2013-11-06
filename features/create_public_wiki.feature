@@ -1,4 +1,4 @@
-Feature: Creat public wikis
+Feature: Create public wikis
   In order to create public wikis
   A user
   Should be logged in with a free account

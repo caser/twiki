@@ -1,14 +1,13 @@
 Feature: Add collaborators
-  In order to add collaborators
+  In order to create awesome wikis
   A user
-  Should enter in collaborator emails
+  Should be able to invite unlimited collaborators
 
-  Scenario: Upgrade to a premium account
-    Given I am on the add collaborators page
-    And I fill in "email" with "elad@email.me"
-    And I press "add collaborator"
-    And I fill in "email" with "bill@clinton.pres"
-    And I press "add collaborator"
-    And I fill in "email" with "barack@obama.pres"
-    When I press "Invite collaborator"
-    Then the page should have "Collaboration invitation sent to elad@email.me, bill@clinton.pres, and barack@obama.pres"
+  Background:
+    Given I am signed in with a premium account
+    And I have created a private wiki
+
+  Scenario: A user adds 1000 collaborators to his wiki
+    Given I try and add 1000 collaborators to my wiki
+    When I press "Invite collaborators"
+    Then I should see "Collaboration invite sent to 1000 users."

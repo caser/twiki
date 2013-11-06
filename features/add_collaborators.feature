@@ -3,8 +3,17 @@ Feature: Add collaborators
   A user
   Should enter in collaborator emails
 
-  Scenario: Upgrade to a premium account
-    Given I am on the add collaborators page
-    And I fill in "email" with "elad@email.me"
-    When I press "Invite collaborator"
-    Then the page should have "Collaboration invitation sent to elad@email.me"
+  Background:
+    Given I am signed in with a premium account
+    And I have created a private wiki
+
+  Scenario: User adds a collaborator to a wiki
+    Given I try and add a collaborator to my wiki
+    When I press "Invite collaborators"
+    Then I should see "Collaboration invite sent to 1 user."
+
+  Scenario: User enters an invalid email when adding a collaborator
+    Given I try and add a collaborator to my wiki
+    And I enter an invalid email
+    When I press "Invite collaborators"
+    Then I should see "Please enter a valid email."

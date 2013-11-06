@@ -9,3 +9,5 @@ module EnterBillingInfoSteps
     fill_in("Zip", :with => zip)
   end
 end
+
+World(EnterBillingInfoSteps)
