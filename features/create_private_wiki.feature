@@ -19,4 +19,4 @@ Feature: Create private wikis
   Scenario: A user without proper authorization tries to view a private wiki
     Given I create a private wiki
     When a user without proper authorization tries to view a private wiki
-    Then he should see "You do not have proper authorization to view this wiki."
+    Then he should see "You do not have permission to view this wiki."

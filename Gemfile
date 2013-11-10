@@ -9,6 +9,10 @@ gem 'sqlite3'
 
 gem "mongoid", "~> 3.0.0"
 
+gem 'mongoid-rspec'
+
+gem 'devise'
+
 group :production do
   gem 'rails_12factor'
   # gem 'pg'
