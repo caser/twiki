@@ -1,7 +1,9 @@
 class Wiki
   include Mongoid::Document
   field :title, type: String
-  field :visibility, type: String
+  field :visibility, type: String, :default => "public"
+
+  attr_accessible :title, :visibility, :viewers, :collaborators
 
   # Define relations
   belongs_to :author, class_name: "User", inverse_of: :wikis
@@ -11,7 +13,7 @@ class Wiki
 
   validates_presence_of :title
   validates_uniqueness_of :title
-  
+
   validates :author, presence: true
 
 end

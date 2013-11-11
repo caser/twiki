@@ -7,11 +7,12 @@ class User
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
+  attr_accessible :account_type, :wikis, :sections, :viewable_wikis, :editable_wikis
 
   # Add username to model
   field :name,               :type => String
-  validates_presence_of :name
-  validates_uniqueness_of :name, :email, :case_sensitive => false
+  validates_presence_of :name, :email, :password
+  validates_uniqueness_of :email, :case_sensitive => false
 
   # Add account_type to model
   field :account_type,       :type => String, :default => "free"
@@ -20,8 +21,8 @@ class User
   # Define relations
   has_many :wikis, inverse_of: :author
   has_many :sections, inverse_of: :author
-  has_and_belongs_to_many :viewable_wikis, inverse_of: :viewers
-  has_and_belongs_to_many :editable_wikis, inverse_of: :collaborators
+  has_and_belongs_to_many :viewable_wikis, class_name: "Wiki", inverse_of: :viewers
+  has_and_belongs_to_many :editable_wikis, class_name: "Wiki", inverse_of: :collaborators
  
   ## Database authenticatable
   field :email,              :type => String, :default => ""

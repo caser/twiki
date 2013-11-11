@@ -1,6 +1,6 @@
 class Section
   include Mongoid::Document
-  include Mongoid::Timestamp
+  include Mongoid::Timestamps
 
   # Define fields
   field :title, type: String
@@ -9,9 +9,11 @@ class Section
   field :internal_id, type: Integer
 
   # Define relations
-  belongs_to :author, class_name: "User", inverse_of :sections
+  belongs_to :author, class_name: "User", inverse_of: :sections
   belongs_to :wiki
 
   # Validate fields
+  validates_presence_of :title, :version, :internal_id
   validates :wiki, presence: true
+  validates :author, presence: true
 end
