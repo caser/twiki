@@ -1,5 +1,6 @@
 class User
   include Mongoid::Document
+  include Mongoid::Slug
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -12,7 +13,10 @@ class User
   # Add username to model
   field :name,               :type => String
   validates_presence_of :name, :email, :password
-  validates_uniqueness_of :email, :case_sensitive => false
+  validates_uniqueness_of :name, :email, :case_sensitive => false
+  
+  # Create slug on unique name (username) field
+  slug :name
 
   # Add account_type to model
   field :account_type,       :type => String, :default => "free"

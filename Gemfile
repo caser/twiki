@@ -11,6 +11,8 @@ gem "mongoid", "~> 3.0.0"
 
 gem 'mongoid-rspec'
 
+gem 'mongoid_slug'
+
 gem 'devise'
 
 group :production do

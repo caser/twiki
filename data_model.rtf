@@ -11,12 +11,12 @@
 \f0\fs24 \cf0 {\listtext	\'95	}Decide on data structure\
 {\listtext	\'95	}Set up Mongoid in Twiki\
 {\listtext	\'95	}Create models based on data structure\
+{\listtext	\'95	}Spec out models\
+{\listtext	\'95	}Add Mongoid Slug\
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
 \cf0 \
 \pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\pardirnatural
-\ls2\ilvl0\cf0 {\listtext	\'95	}Spec out models\
-{\listtext	\'95	}Add Mongoid Slug\
-{\listtext	\'95	}Write unit tests for Pages / Wikis\
+\ls2\ilvl0\cf0 {\listtext	\'95	}Write unit tests for Sections / Wikis\
 {\listtext	\'95	}Facebook authentication with Devise\
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
 \cf0 \
@@ -30,7 +30,7 @@
 {\listtext	\uc0\u8259 	}account_type\
 {\listtext	\uc0\u8259 	}has_many :wikis, inverse_of :author\
 {\listtext	\uc0\u8259 	}has_many :sections, inverse_of :author\
-{\listtext	\uc0\u8259 	}has_and_belongs_to_many :viewable_wikis, inverse_of: :viewers\
+{\listtext	\uc0\u8259 	}has_and_belongs_to_many :viewable_wikis, inverse_of: :viewers2\
 {\listtext	\uc0\u8259 	}has_and_belongs_to_many :editable_wikis, inverse_of: :collaborators\
 \pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\pardirnatural
 \ls3\ilvl0\cf0 {\listtext	\'95	}wiki\

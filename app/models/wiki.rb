@@ -1,5 +1,8 @@
 class Wiki
+
   include Mongoid::Document
+  include Mongoid::Slug
+
   field :title, type: String
   field :visibility, type: String, :default => "public"
 
@@ -13,6 +16,9 @@ class Wiki
 
   validates_presence_of :title
   validates_uniqueness_of :title
+
+  # Define slug on title field
+  slug :title
 
   validates :author, presence: true
 
