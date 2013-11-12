@@ -45,7 +45,6 @@ describe Wiki do
       @wiki.collaborators.should_not include(@user)
       @wiki.viewers.should include(@user)
     end
-
   end
 
 end
