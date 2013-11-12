@@ -5,9 +5,9 @@ class Section
 
   # Define fields
   field :title, type: String
-  # field :version, type: Integer
   field :content, type: String
   field :internal_id, type: Integer
+  field :versions, type: Array
 
   # Define relations
   belongs_to :author, class_name: "User", inverse_of: :sections

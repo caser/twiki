@@ -36,13 +36,16 @@ describe Wiki do
 
     it "should allow the user to add a collaborator" do
       @wiki.collaborators << @user
-      @wiki.collaborators.should_not be_empty
+      @wiki.viewers.should_not include(@user)
+      @wiki.collaborators.should include(@user)
     end
 
     it "should allow the user to add a viewer" do
       @wiki.viewers << @user
-      @wiki.viewers.should_not be_empty
+      @wiki.collaborators.should_not include(@user)
+      @wiki.viewers.should include(@user)
     end
+
   end
 
 end

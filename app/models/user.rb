@@ -12,39 +12,31 @@ class User
 
   # Add username to model
   field :name,               :type => String
+  field :email,              :type => String, :default => ""
+  field :encrypted_password, :type => String, :default => ""
+  field :account_type,       :type => String, :default => "free"
+  field :reset_password_token,   :type => String
+  field :reset_password_sent_at, :type => Time
+  field :remember_created_at, :type => Time
+  field :sign_in_count,      :type => Integer, :default => 0
+  field :current_sign_in_at, :type => Time
+  field :last_sign_in_at,    :type => Time
+  field :current_sign_in_ip, :type => String
+  field :last_sign_in_ip,    :type => String
+
   validates_presence_of :name, :email, :password
   validates_uniqueness_of :name, :email, :case_sensitive => false
-  
+  validates_inclusion_of :account_type, in: ["free", "premium"]
+
   # Create slug on unique name (username) field
   slug :name
 
-  # Add account_type to model
-  field :account_type,       :type => String, :default => "free"
-  validates_inclusion_of :account_type, in: ["free", "premium"]
 
   # Define relations
   has_many :wikis, inverse_of: :author
   has_many :sections, inverse_of: :author
   has_and_belongs_to_many :viewable_wikis, class_name: "Wiki", inverse_of: :viewers
   has_and_belongs_to_many :editable_wikis, class_name: "Wiki", inverse_of: :collaborators
- 
-  ## Database authenticatable
-  field :email,              :type => String, :default => ""
-  field :encrypted_password, :type => String, :default => ""
-
-  ## Recoverable
-  field :reset_password_token,   :type => String
-  field :reset_password_sent_at, :type => Time
-
-  ## Rememberable
-  field :remember_created_at, :type => Time
-
-  ## Trackable
-  field :sign_in_count,      :type => Integer, :default => 0
-  field :current_sign_in_at, :type => Time
-  field :last_sign_in_at,    :type => Time
-  field :current_sign_in_ip, :type => String
-  field :last_sign_in_ip,    :type => String
 
   ## Confirmable
   # field :confirmation_token,   :type => String
