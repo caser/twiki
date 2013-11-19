@@ -1,5 +1,5 @@
 Given(/^I am signed in with a premium account$/) do
-  @user = User.create!(name: 'casey', password: 'secret', email: '1@email.me', type: "premium")
+  @user = User.create!(name: 'casey', password: 'secret123', email: '1@email.me', type: "premium")
   sign_in(@user.name, @user.password)
 end
 

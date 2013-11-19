@@ -1,5 +1,5 @@
 Given(/^I am signed in$/) do
-  @user = User.create!(name: 'casey', password: 'secret', email: '1@email.me')
+  @user = User.create!(name: 'casey', password: 'secret123', email: '1@email.me')
   sign_in(@user.name, @user.password)
 end
 

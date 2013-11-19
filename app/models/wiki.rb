@@ -3,10 +3,10 @@ class Wiki
   include Mongoid::Document
   include Mongoid::Slug
 
-  attr_accessible :title, :visibility, :viewers, :collaborators
+  attr_accessible :title, :public, :viewers, :collaborators
 
   field :title, type: String
-  field :visibility, type: Boolean, :default => true
+  field :public, type: Boolean, :default => true
 
   # Define relations
   belongs_to :author, class_name: "User", inverse_of: :wikis

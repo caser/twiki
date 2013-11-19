@@ -11,7 +11,7 @@ end
 
 When(/^a user without proper authorization tries to view a private wiki$/) do
   click_on("Sign out")
-  @user = User.create!(name: "elad", email: "2@mail.me", password: "secret", type: "free")
+  @user = User.create!(name: "elad", email: "2@mail.me", password: "secret123", type: "free")
   sign_in(@user.name, @user.password)
   visit_wiki(@title)
 end

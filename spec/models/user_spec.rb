@@ -23,6 +23,7 @@ describe User do
       @user = create(:user)
       @viewer = create(:user)
       @collaborator = create(:user)
+      # TODO - add better names (i.e. @grateful_dead rather than @wiki1)
       @wiki1 = create(:wiki, author: @user)
       @wiki2 = create(:wiki, author: @user)
       @section1 = create(:section, author: @user, wiki: @wiki1)

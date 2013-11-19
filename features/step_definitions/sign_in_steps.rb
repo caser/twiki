@@ -1,5 +1,5 @@
 Given(/^the user "(.*?)" has an account$/) do |name|
-  @user = User.create!(name: name, password: 'secret', email: '1@email.me')
+  @user = User.create!(name: name, password: 'secret123', email: '1@email.me')
 end
 
 When(/^he logs in with the correct information$/) do

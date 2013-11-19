@@ -1,7 +1,6 @@
 class Section
   include Mongoid::Document
   include Mongoid::Timestamps
-  include Mongoid::Versioning
 
   # Define fields
   field :title, type: String

@@ -8,7 +8,7 @@ Before do
 end
 
 Given(/^I am signed in with a free account$/) do
-  @user = User.create!(name: 'casey', password: 'secret', email: '1@email.me', type: "free")
+  @user = User.create!(name: 'casey', password: 'secret123', email: '1@email.me', type: "free")
   sign_in(@user.name, @user.password)
 end
 

@@ -31,7 +31,6 @@ class User
   # Create slug on unique name (username) field
   slug :name
 
-
   # Define relations
   has_many :wikis, inverse_of: :author
   has_many :sections, inverse_of: :author
