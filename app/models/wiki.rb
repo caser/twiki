@@ -14,7 +14,7 @@ class Wiki
   has_and_belongs_to_many :viewers, class_name: "User", inverse_of: :viewable_wikis
   has_and_belongs_to_many :collaborators, class_name: "User", inverse_of: :editable_wikis
 
-  validates :author, presence: true
+  validates_presence_of :author
   validates_presence_of :title
   validates_uniqueness_of :title
 

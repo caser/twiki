@@ -5,6 +5,10 @@ FactoryGirl.define do
     name { Faker::Name.first_name }
     email { Faker::Internet.email }
     password { "secret123" }
+
+    factory :admin do
+      account_type "admin"
+    end
   end
 
   factory :premium_user do
@@ -16,4 +20,5 @@ FactoryGirl.define do
     email nil
     password nil
   end
+
 end

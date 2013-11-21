@@ -57,6 +57,10 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 
+  # Add Devise test helpers
+  config.include Devise::TestHelpers, :type => :controller
+  config.extend ControllerMacros, :type => :controller
+
   # Add Mongoid configuration
   config.include Mongoid::Matchers
   config.before(:each) { Mongoid::IdentityMap.clear }

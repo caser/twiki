@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe WikisController do
 
+  login_user
+
   before(:each) do
     @user = create(:user)
     @wiki = @user.wikis.create(attributes_for(:wiki))
@@ -60,7 +62,7 @@ describe WikisController do
       it "creates a new wiki" do
         expect{
           post :create, wiki: attributes_for(:wiki)
-        }.to change(Wiki, :count).by(1)
+        }.to change{Wiki.count}.by(1)
       end
 
       it "assigns a newly created wiki as @wiki" do
@@ -105,6 +107,7 @@ describe WikisController do
 
       it "redirects to the updated wiki" do
         put :update, id: @wiki.id, wiki: attributes_for(:wiki)
+        @wiki.reload
         response.should redirect_to @wiki
       end
     end
@@ -115,9 +118,18 @@ describe WikisController do
         assigns(:wiki).should eq(@wiki)
       end
 
-      it "does not change @wiki's attributes" do
+      it "does not change @wiki's attributes with an invalid title" do
+        user2 = create(:user)
         put :update, id: @wiki.id,
-          wiki: attributes_for(:wiki, title: "The best wiki ever.")
+          wiki: attributes_for(:invalid_wiki, author: @user2)
+        @wiki.reload
+        @wiki.author.should_not eq(user2)
+      end
+
+      it "does not change @wiki's attributes with an invalid author" do
+        puts "wiki title is: #{@wiki.title}"
+        put :update, id: @wiki.id,
+          wiki: attributes_for(:invalid_wiki, author: nil, title: "The best wiki ever.")
         @wiki.reload
         @wiki.title.should_not eq("The best wiki ever.")
       end

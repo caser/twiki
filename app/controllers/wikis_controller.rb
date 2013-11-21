@@ -1,8 +1,10 @@
 class WikisController < ApplicationController
 
   def create
+    @user = current_user
     @wiki = Wiki.new(params[:wiki])
-    if @wiki.save!
+    @wiki.author = @user
+    if @wiki.save
       redirect_to @wiki, notice: "Wiki was saved successfully."
     else
       flash[:error] = "There was a problem saving your wiki. Please try again."
