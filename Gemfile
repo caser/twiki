@@ -15,6 +15,8 @@ gem 'mongoid_slug'
 
 gem 'devise'
 
+gem 'bson_ext'
+
 group :production do
   gem 'rails_12factor'
   # gem 'pg'

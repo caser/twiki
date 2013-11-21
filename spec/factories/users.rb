@@ -10,4 +10,10 @@ FactoryGirl.define do
   factory :premium_user do
     account_type = "premium"
   end
+
+  factory :invalid_user do
+    name nil
+    email nil
+    password nil
+  end
 end
