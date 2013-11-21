@@ -121,7 +121,7 @@ describe WikisController do
       it "does not change @wiki's attributes with an invalid title" do
         user2 = create(:user)
         put :update, id: @wiki.id,
-          wiki: attributes_for(:invalid_wiki, author: @user2)
+          wiki: attributes_for(:wiki, author: @user2, title: nil)
         @wiki.reload
         @wiki.author.should_not eq(user2)
       end
@@ -129,8 +129,10 @@ describe WikisController do
       it "does not change @wiki's attributes with an invalid author" do
         puts "wiki title is: #{@wiki.title}"
         put :update, id: @wiki.id,
-          wiki: attributes_for(:invalid_wiki, author: nil, title: "The best wiki ever.")
+          wiki: attributes_for(:wiki, author: nil, title: "The best wiki ever.")
         @wiki.reload
+        puts "wiki title is: #{@wiki.title}"
+        puts "wiki is: #{@wiki.inspect}"
         @wiki.title.should_not eq("The best wiki ever.")
       end
 
