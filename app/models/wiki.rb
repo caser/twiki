@@ -3,7 +3,7 @@ class Wiki
   include Mongoid::Document
   include Mongoid::Slug
 
-  attr_accessible :title, :public, :viewers, :collaborators, :author
+  attr_accessible :title, :public, :viewers, :collaborators, :author_id
 
   field :title, type: String
   field :public, type: Boolean, :default => true

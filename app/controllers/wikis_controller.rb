@@ -27,7 +27,6 @@ class WikisController < ApplicationController
   def update
     @wiki = Wiki.find(params[:id])
     if @wiki.update_attributes(params[:wiki])
-      puts "Updated!"
       redirect_to @wiki, notice: "Wiki was updated successfully."
     else
       puts "Error!"

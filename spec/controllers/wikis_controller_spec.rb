@@ -98,11 +98,19 @@ describe WikisController do
         assigns(:wiki).should eq(@wiki)
       end
 
-      it "changes @wiki's attributes" do
+      it "changes @wiki's title" do
         put :update, id: @wiki.id,
           wiki: attributes_for(:wiki, title: "The best wiki ever.")
         @wiki.reload
         @wiki.title.should eq("The best wiki ever.")
+      end
+
+      it "changes @wiki's author" do
+        user2 = create(:user)
+        put :update, id: @wiki.id,
+          wiki: build(:wiki, author: user2).attributes.symbolize_keys
+        @wiki.reload
+        @wiki.author.should eq(user2)
       end
 
       it "redirects to the updated wiki" do
@@ -114,25 +122,23 @@ describe WikisController do
 
     context "with invalid attributes" do
       it "locates the requested @wiki" do
-        put :update, id: @wiki.id, wiki: attributes_for(:invalid_wiki)
+        put :update, id: @wiki.id, wiki: build(:invalid_wiki).attributes.symbolize_keys
         assigns(:wiki).should eq(@wiki)
       end
 
-      it "does not change @wiki's attributes with an invalid title" do
+      it "does not change @wiki's author with an invalid title" do
         user2 = create(:user)
         put :update, id: @wiki.id,
-          wiki: attributes_for(:wiki, author: @user2, title: nil)
+          wiki: build(:wiki, title: nil, author: user2).attributes.symbolize_keys
         @wiki.reload
         @wiki.author.should_not eq(user2)
       end
 
       it "does not change @wiki's attributes with an invalid author" do
-        puts "wiki title is: #{@wiki.title}"
+        invalid_wiki = build(:wiki, author_id: nil, title: "The best wiki ever.")
         put :update, id: @wiki.id,
-          wiki: attributes_for(:wiki, author: nil, title: "The best wiki ever.")
+          wiki: invalid_wiki.attributes.slice(*invalid_wiki.class.accessible_attributes)
         @wiki.reload
-        puts "wiki title is: #{@wiki.title}"
-        puts "wiki is: #{@wiki.inspect}"
         @wiki.title.should_not eq("The best wiki ever.")
       end
 
