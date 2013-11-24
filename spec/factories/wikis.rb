@@ -3,7 +3,7 @@ require 'faker'
 FactoryGirl.define do
 
   factory :wiki, :aliases => [:editable_wiki, :viewable_wiki] do
-    title { Faker::Lorem.words(rand(2..6)) }
+    title { Faker::Lorem.words(rand(2..6)).join(" ") }
     author
   end
 

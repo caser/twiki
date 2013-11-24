@@ -18,6 +18,7 @@ class WikisController < ApplicationController
 
   def show
     @wiki = Wiki.find(params[:id])
+    @sections = @wiki.sections
   end
 
   def index

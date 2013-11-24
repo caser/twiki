@@ -6,7 +6,7 @@ describe WikisController do
 
   before(:each) do
     @user = create(:user)
-    @wiki = @user.wikis.create(attributes_for(:wiki))
+    @wiki = create(:wiki)
   end
 
   describe "GET #index" do
@@ -30,6 +30,12 @@ describe WikisController do
     it "renders the #show template" do
       get :show, id: @wiki.id
       response.should render_template :show
+    end
+
+    it "assigns the wiki's sections to @sections" do
+      wiki = Wiki.first
+      get :show, id: wiki.id
+      assigns(:sections).should eq(wiki.sections)
     end
   end
 

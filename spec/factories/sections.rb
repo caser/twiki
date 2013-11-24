@@ -7,14 +7,14 @@ FactoryGirl.define do
   end
 
   factory :section do
-    title { Faker::Name.title }
-    content { Faker::Lorem.paragraphs }
+    title { Faker::Lorem.words(rand(1..5)).join(" ") }
+    content { Faker::Lorem.paragraphs(rand(3..7)).join("\n") }
     internal_id
     author
     wiki
   end
 
-  factory :invalid_section do
+  factory :invalid_section, parent: :section do
     title nil
     content nil
   end

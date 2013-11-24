@@ -4,7 +4,11 @@ Twiki::Application.routes.draw do
 
   resources :users
 
-  resources :wikis
+  resources :wikis do
+    resources :sections, only: [:create]
+  end
+
+  resources :sections, except: [:create]
 
   root :to => "home#index"
   

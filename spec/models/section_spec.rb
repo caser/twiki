@@ -18,15 +18,6 @@ describe Section do
     build(:section, wiki: nil).should_not be_valid
   end
 
-  it "should maintain past versions of section document" do
-    @section = create(:section)
-    @section.content = "Lorem ipsum dolor it."
-    @section.save!
-    @section.content = "Revised"
-    @section.save!
-    @section.versions.should have(2).items
-  end
-
   it "is invalid without an author" do
     build(:section, author: nil).should_not be_valid
   end
@@ -45,4 +36,33 @@ describe Section do
     end
   end
 
+  context "test versioning" do
+    before :each do
+      @section = create(:section)
+    end
+
+    it "saves a copy of the old version of the section" do
+      @section.content = "Super awesome new wiki content."
+      @section.save
+      @section.diffs.should have(1).item
+    end
+
+    it "saves a copy of the old version of the section with correct content" do
+      old_content = @section.content
+      @section.update_attributes(content: "Super awesome new wiki content.")
+      puts "Diffs:"
+      puts @section.diffs.inspect
+      @section.diffs.last["content"].first.should eq(old_content)
+    end
+
+    it "saves copies of multiple previous versions" do
+      5.times do |i|
+        @section.content = "This is the #{i}th version of the section."
+        @section.save
+      end
+      puts "Diffs:"
+      puts @section.diffs.inspect
+      @section.diffs.should have(5).items
+    end
+  end
 end
