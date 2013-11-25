@@ -17,6 +17,10 @@ gem 'devise'
 
 gem 'bson_ext'
 
+gem 'haml'
+
+gem 'haml-rails'
+
 group :production do
   gem 'rails_12factor'
   # gem 'pg'
