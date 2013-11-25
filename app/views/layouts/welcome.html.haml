@@ -1,0 +1,15 @@
+%html{html_attrs("en-US")}
+%head
+  %title Twiki
+  = stylesheet_link_tag       "application", :media => "all"
+  = javascript_include_tag    "application"
+  = csrf_meta_tags
+
+%body
+
+  .container
+    %ul.nav.nav-tabs
+      .pull-right
+        = link_to "Sign in", new_user_session_path
+
+    = yield

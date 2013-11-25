@@ -1,19 +1,19 @@
-.hero-unit
-  %h1 Twiki
-  %p Twiki is a freemium wiki site where you can create awesome wikis to share with your friends.
-  %p
-    = link_to "Sign In", new_user_session_path, class: 'btn btn-primary btn-large'
-    or
-    = link_to "Sign Up", new_user_registration_path, class: 'btn btn-primary btn-large'
-    today!
+%h2.text-center Twiki: Social, Markdown Wikis
 
 .row-fluid
+  .hero-unit.span8.offset2
+    .row-fluid.span8.offset2
+      %h4 Create and share Markdown Wikis
+    .row-fluid.span4.offset4
+      %p
+      = link_to "Sign In", new_user_session_path, class: 'btn btn-primary btn-block'
+
+.row-fluid
+  .span4.offset2
+    %h3 Create as many public wikis as you want!
+    %img
+    %p.text-center Free Plan
   .span4
-    %h2 Create Wikis
-    %p Create wikis with friends, family, or coworkers to store knowledge in a fun, accessible way!
-  .span4
-    %h2 Markdown Formatting
-    %p Write your wikis in Markdown format, and see them rendered in real time!
-  .span4
-    %h2 Private Wikis
-    %p Upgrade to a premium account and you can create private wikis, accessible only to people you choose!
+    %h3 Create private wikis!
+    %img
+    %p.text-center Premium Plan
