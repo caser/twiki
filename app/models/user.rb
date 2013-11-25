@@ -24,7 +24,7 @@ class User
   field :current_sign_in_ip, :type => String
   field :last_sign_in_ip,    :type => String
 
-  validates_presence_of :name, :email, :password
+  validates_presence_of :name, :email
   validates_uniqueness_of :name, :email, :case_sensitive => false
   validates_inclusion_of :account_type, in: ["free", "premium"]
 

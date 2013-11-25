@@ -1,5 +1,9 @@
 Twiki::Application.routes.draw do
 
+  get "upgrade/show"
+
+  get "upgrade/update"
+
   devise_for :users
 
   resources :users
