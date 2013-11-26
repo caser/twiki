@@ -17,6 +17,10 @@ class SectionsController < ApplicationController
     @section = Section.new
   end
 
+  def edit
+    @section = Section.find(params[:id])
+  end
+
   def update
     @section = Section.find(params[:id])
     if @section.update_attributes(params[:section])

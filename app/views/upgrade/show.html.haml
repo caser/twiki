@@ -1,2 +1,16 @@
-%h1 Upgrade#show
-%p Find me in app/views/upgrade/show.html.haml
+.container
+  .span8.offset2
+    .span12
+      %h1 Upgrade to a premium account
+      %p Premium users get the following benefits:
+      %ul
+        %li Create private wikis
+        %li Add as many collaborators to your wiki as you like
+      %p Ready to take things to the next level?
+      %P Go ahead:
+      = form_tag upgrade_create_path do
+        %article
+          %label.amount
+            %span Premium Plan: $10.00 / month
+
+        %script{:src => "https://checkout.stripe.com/checkout.js", "class" => "stripe-button", "data-key" => "#{Rails.configuration.stripe[:publishable_key]}", "data-description" => "A monthly subscription", "data-amount" => 1000}

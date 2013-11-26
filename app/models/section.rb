@@ -27,8 +27,7 @@ class Section
   protected
 
   def save_old_version
-    changes = self.changes
-    self.diffs << changes
+    self.diffs << self.changes
   end
 
 end

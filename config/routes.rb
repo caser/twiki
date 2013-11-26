@@ -2,7 +2,7 @@ Twiki::Application.routes.draw do
 
   get "upgrade/show"
 
-  get "upgrade/update"
+  post "upgrade/create"
 
   devise_for :users
 
